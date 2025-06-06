@@ -1,20 +1,24 @@
 import { useState} from 'react'
-const Display = (props) =>{
+const Display = ({counter}) =>{
     return(
-      <div>{props.counter}</div>
+      <div>{counter}</div>
     )
 
     
 }
-const Button = (props) =>{
+const Button = ({onClick,text}) =>{
   return(
-    <button onClick={props.onClick}>{props.text}</button>
+    <button onClick={onClick}>{text}</button>
   )
 }
 const App = () =>{
   const [counter , setCounter] = useState(0) // destructure code 
-  const incByOne = () => setCounter(counter+1)
-  const decByOne = () => setCounter(counter-1)
+  console.log("Curent value", counter)
+  const incByOne = () =>{setCounter(counter+1)
+  console.log("Inc by one" ,counter)}
+
+  const decByOne = () => {setCounter(counter-1)
+  console.log("dec counter by -1" , counter)}
   const setTozero = () =>setCounter(0)
   return (
     <div>
