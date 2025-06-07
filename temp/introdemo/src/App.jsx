@@ -1,5 +1,36 @@
 import { useState} from 'react'
-const Display = ({counter}) =>{
+const App =() => {
+  const[click , setClick] = useState({
+    left :0 , right:0}
+  )
+
+const leftButton = ()=>{
+  const newClick ={
+    ...click,  // creates a obj with copy of property of click
+    left: click.left+1 // changing the left property
+  }
+  setClick(newClick)  //give it back to setClick which changes the state
+}
+const rightButton = ()=>{
+  const newClick = {
+    ...click,
+    right : click.right +1
+  }
+  setClick(newClick)
+}
+return (
+  <div>
+    {click.left}
+    <button onClick={leftButton}>left</button>
+    {click.right}
+    <button onClick={rightButton}>right</button>
+  </div>
+)
+}
+
+
+
+/*const Display = ({counter}) =>{
     return(
       <div>{counter}</div>
     )
