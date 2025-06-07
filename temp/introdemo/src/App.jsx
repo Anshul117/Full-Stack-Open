@@ -11,7 +11,7 @@ const leftButton = ()=>{
   }
   setClick(newClick)  //give it back to setClick which changes the state
 }
-const rightButton = ()=>{
+const rightButton = ()=>{ // dont change the state directly insted make a copy of it and change that copy call setState
   const newClick = {
     ...click,
     right : click.right +1
