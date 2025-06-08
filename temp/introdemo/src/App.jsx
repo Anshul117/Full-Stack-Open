@@ -1,5 +1,5 @@
 import { useState } from 'react'
-const History = (props) => {
+const History = (props) => { //The History component renders completely different React elements depending on the state of the application. This is called conditional rendering.
   if(props.allClicks.length ==0){
     return (
       <div>
