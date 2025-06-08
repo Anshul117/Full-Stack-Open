@@ -1,31 +1,48 @@
-import { useState} from 'react'
-const App =() => {
-  const[click , setClick] = useState({
-    left :0 , right:0}
+import { useState } from 'react'
+const App = () => {
+  const [click, setClick] = useState({
+    left: 0, right: 0
+  }
   )
+  const [allClicks, setAll] = useState([])
+  const [total, setTotal] = useState(0)
+  const leftButton = () => {
 
-const leftButton = ()=>{
-  const newClick ={
-    ...click,  // creates a obj with copy of property of click
-    left: click.left+1 // changing the left property
+    const newClick = {
+
+      ...click, 
+      left: click.left +1
+ //  
+      //                  creates a obj with copy of property of click
+      // changing the left property
+    }
+    setAll(allClicks.concat("L"))
+    setTotal(newClick.left + newClick.right)                                                 // setTotal(click.left + click.right) tota; is always behind by 1 because state update at some point before rendered not imediately
+
+    setClick(newClick)                                   //give it back to setClick which changes the state
   }
-  setClick(newClick)  //give it back to setClick which changes the state
-}
-const rightButton = ()=>{ // dont change the state directly insted make a copy of it and change that copy call setState
-  const newClick = {
-    ...click,
-    right : click.right +1
+  const rightButton = () => {                         // dont change the state directly insted make a copy of it and change that copy call setState
+    const newClick = {
+      ...click,
+      right: click.right + 1
+    }
+    setAll(allClicks.concat("R"))
+    setTotal(newClick.left + newClick.right)
+    //setTotal(click.left + click.right)
+    setClick(newClick)
   }
-  setClick(newClick)
-}
-return (
-  <div>
-    {click.left}
-    <button onClick={leftButton}>left</button>
-    {click.right}
-    <button onClick={rightButton}>right</button>
-  </div>
-)
+  return (
+    <div>
+
+      {click.left}
+      <button onClick={leftButton}>left</button>
+
+      <button onClick={rightButton}>right</button>
+      {click.right}
+      <p>{allClicks.join("")}</p>
+      <p>total {total}</p>
+    </div>
+  )
 }
 
 
