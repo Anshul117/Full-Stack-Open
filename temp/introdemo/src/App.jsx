@@ -12,6 +12,10 @@ const History = (props) => { //The History component renders completely differen
     <div>button pressed history : {props.allClicks.join(" ")}</div>)
   }
 }
+const Button = ({text,onClick}) => {
+  return(
+  <button onClick={onClick}>{text}</button>)
+}
 const App = () => {
   const [click, setClick] = useState({
     left: 0, right: 0
@@ -46,12 +50,10 @@ const App = () => {
   }
   return (
     <div>
-
       {click.left}
-      <button onClick={leftButton}>left</button>
-
-      <button onClick={rightButton}>right</button>
+      <Button onClick={leftButton} text={"left"} />
       {click.right}
+      <Button onClick={rightButton} text ={"right"} />
       
       <p>total {total}</p>
      < History allClicks ={allClicks} />
