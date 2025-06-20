@@ -29,15 +29,13 @@ const Statistics = ({ good, neutral, bad }) => {
       <h2> Statistics</h2>
       <table>
         <tbody>
-          {[
-            <StatisticLine key="good" text="Good :" value={good} />,
-            <StatisticLine key="bad" text="Bad :" value={bad} />,
-            <StatisticLine key="neutral" text="Neutral :" value={neutral} />,
-            <StatisticLine key="total" text="Total :" value={total} />,
-            <StatisticLine key="avg" text="Avg :" value={Avg} />,
-            <StatisticLine key="positive" text="Positive :" value={positive} />
-          ]}
-        </tbody>
+  <StatisticLine key="good" text="Good :" value={good} />
+  <StatisticLine key="bad" text="Bad :" value={bad} />
+  <StatisticLine key="neutral" text="Neutral :" value={neutral} />
+  <StatisticLine key="total" text="Total :" value={total} />
+  <StatisticLine key="avg" text="Avg :" value={Avg} />
+  <StatisticLine key="positive" text="Positive :" value={positive} />
+</tbody>
       </table>
     </div>
   )
