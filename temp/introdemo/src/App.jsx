@@ -1,6 +1,7 @@
 import { useState } from 'react'
 const History = (props) => { //The History component renders completely different React elements depending on the state of the application. This is called conditional rendering.
-  if(props.allClicks.length ==0){
+  //console.log(props)
+  if (props.allClicks.length == 0) {
     return (
       <div>
         This app is used by pressing button
@@ -9,12 +10,12 @@ const History = (props) => { //The History component renders completely differen
   }
   else {
     return (
-    <div>button pressed history : {props.allClicks.join(" ")}</div>)
+      <div>button pressed history : {props.allClicks.join(" ")}</div>)
   }
 }
-const Button = ({text,onClick}) => {
-  return(
-  <button onClick={onClick}>{text}</button>)
+const Button = ({ text, onClick }) => {
+  return (
+    <button onClick={onClick}>{text}</button>)
 }
 const App = () => {
   const [click, setClick] = useState({
@@ -27,9 +28,9 @@ const App = () => {
 
     const newClick = {
 
-      ...click, 
-      left: click.left +1
- //  
+      ...click,
+      left: click.left + 1
+      //  
       //                  creates a obj with copy of property of click
       // changing the left property
     }
@@ -46,17 +47,21 @@ const App = () => {
     setAll(allClicks.concat("R"))
     setTotal(newClick.left + newClick.right)
     //setTotal(click.left + click.right)
+    //console.log(newClick)
     setClick(newClick)
   }
+  //debugger
   return (
+    
     <div>
       {click.left}
       <Button onClick={leftButton} text={"left"} />
+      <Button onClick={rightButton} text={"right"} />
       {click.right}
-      <Button onClick={rightButton} text ={"right"} />
-      
+
+
       <p>total {total}</p>
-     < History allClicks ={allClicks} />
+      < History allClicks={allClicks} />
     </div>
   )
 }
