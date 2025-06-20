@@ -36,18 +36,34 @@ const App = () => {
     console.log(iniObj)
     return iniObj
   })
- 
+    const max = 0;
   const voteForCurrent = () => {
-    const updatedVotes = { ...votes };
+    const updatedVotes = { ...votes };   // To update I first have to create a copy then update the state
     updatedVotes[selected] += 1;
+  
     setVotes(updatedVotes);
   };
+  const mostVotes = ()=>{
+    let result = -1
+    let indexOf = -1
+    for(let index in votes){
+      if(result<votes[index]){
+        result = votes[index]
+        indexOf = index
+      }
+    }
+    return indexOf
+  }
 
   return (
     <div>
       <Display att = {anecdotes[selected]}  vote = {votes[selected]} />
+      
       <Button click = {() => setSelected(Math.floor(Math.random()*anecdotes.length)) } text = {"next anecdotes"}  />
       <Button click = {voteForCurrent} text = {"Vote"} />
+      <h2>Anecdotes with most votes </h2>
+      <Display att ={anecdotes[mostVotes()]} vote = {votes[mostVotes()]} />
+      
       
       
 
