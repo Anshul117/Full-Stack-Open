@@ -19,7 +19,18 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   const total = good + bad + neutral
-  const avg = (good + bad*-1)/total
+  const avg = () =>{
+    if(total==0){
+      return " No Input Yet"
+    }
+    return (good + bad*-1)/total
+  }
+  const TPos = () =>{
+    if(good==0){
+      return "No positive feedback"
+    }
+    return good/avg
+  }
   
   
 
@@ -36,7 +47,8 @@ const App = () => {
       <Display text="neutral :" att={neutral} />
       <Display text="bad :" att={bad} />
       <Display text = "total" att = {good + neutral + bad} />
-      <Display text = " Average :" att = {avg} />
+      <Display text = " Average :" att = {avg()} />
+      <Display text = "Positive :" att = {TPos()} />
 
 
     </div>
