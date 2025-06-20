@@ -1,7 +1,10 @@
 import { useState } from 'react'
-const Display = ({att}) =>{
+const Display = ({att,vote}) =>{
   return (
-    <div> {att}</div>
+    <div> {att}
+      <p> has {vote} votes</p>
+    </div>
+   
   )
 }
 const Button = (props) =>{
@@ -22,15 +25,33 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
+ 
    
   const [selected, setSelected] = useState(0)
+   const [votes,setVotes] = useState(()=>{
+    const iniObj = {}
+    anecdotes.forEach((_element,index) => {
+      iniObj[index] =0
+    })
+    console.log(iniObj)
+    return iniObj
+  })
+ 
+  const voteForCurrent = () => {
+    const updatedVotes = { ...votes };
+    updatedVotes[selected] += 1;
+    setVotes(updatedVotes);
+  };
 
   return (
     <div>
-      <Button click = {() => setSelected((selected+1)%anecdotes.length) } text = {"Forward"} />
-      <Button click = {() => setSelected(selected ==0 ? 0 :selected-1) } text = {"BackWard"} />
+      <Display att = {anecdotes[selected]}  vote = {votes[selected]} />
+      <Button click = {() => setSelected(Math.floor(Math.random()*anecdotes.length)) } text = {"next anecdotes"}  />
+      <Button click = {voteForCurrent} text = {"Vote"} />
+      
+      
 
-      <Display att = {anecdotes[selected]}  />
+      
     </div>
   )
 }
