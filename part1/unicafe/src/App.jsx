@@ -23,13 +23,14 @@ const App = () => {
     if(total==0){
       return " No Input Yet"
     }
-    return (good + bad*-1)/total
+    return ((good + bad*-1)/total).toFixed(2)
   }
   const TPos = () =>{
     if(good==0){
       return "No positive feedback"
     }
-    return good/avg
+    console.log(bad)
+    return (good/total).toFixed(2)
   }
   
   
