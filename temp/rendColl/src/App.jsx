@@ -5,7 +5,9 @@ const App = (props) => {
     <div>
       <h1>Notes</h1>
       <ul>
-        {notes.map(note => <li>{notes.content}</li>)}
+        {console.log(notes.id)} // undefined
+        {notes.map(note => <li key={note.id}>{note.content} ;
+        </li>)}   // without key attribute
       </ul>
     </div>
   )
