@@ -1,14 +1,21 @@
-const App = (props) => {
-  const { notes } = props
+const Note = ({note_att}) =>{
+  return (
+    <div>
+      <li>{note_att.content}</li>
+    </div>
+  )
+}
+
+
+const App = ({notes}) => {
+  
 
   return (
     <div>
       <h1>Notes</h1>
       <ul>
-       
+       {notes.map(note => (<Note key = {note.id} note_att= {note} />))}
 
-        {notes.map(note => <li key={note.id}>{note.content} 
-        </li>)}   // without key attribute
       </ul>
     </div>
   )
