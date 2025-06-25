@@ -5,8 +5,9 @@ const App = (props) => {
     <div>
       <h1>Notes</h1>
       <ul>
-        {console.log(notes.id)} // undefined
-        {notes.map(note => <li key={note.id}>{note.content} ;
+       
+
+        {notes.map(note => <li key={note.id}>{note.content} 
         </li>)}   // without key attribute
       </ul>
     </div>
@@ -14,3 +15,8 @@ const App = (props) => {
 }
 
 export default App
+
+// (note) => {
+ //// return note.id
+//}
+//Generate a unique id for every item and use it as key when rendering the list.
