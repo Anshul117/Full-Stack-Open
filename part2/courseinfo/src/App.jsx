@@ -1,18 +1,6 @@
 
-const Statistics = ({ total }) => {
-  return (
-    <div>
-      
-      <li>   total of {total} exercises</li>
-    </div>)
-}
-const Course = ({ part }) => {
-  return (
-         <li>{part.name} {part.exercises}</li>
-  )
-
-
-}
+import PartRender from './Part'
+import StatisticsRender from './Statistics'
 const App = () => {
   const courses = [
     {
@@ -74,9 +62,9 @@ const App = () => {
 
         <h2>{course.name}</h2>
         <ul>
-          {course.parts.map(part => (<Course key={part.id} part={part} />))}
+          {course.parts.map(part => (<PartRender key={part.id} part={part} />))}
         </ul>
-          <Statistics total = {total} />  
+          <StatisticsRender total = {total} />  
       </div>)})}
 
 
