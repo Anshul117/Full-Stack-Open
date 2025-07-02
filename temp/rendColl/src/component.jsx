@@ -1,7 +1,7 @@
 const Note = ({note_att}) =>{
     return (
         <div>
-            {note_att.content}
+           <li>{note_att.content}</li> 
         </div>
     )
         
