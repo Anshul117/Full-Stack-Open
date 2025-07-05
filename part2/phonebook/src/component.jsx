@@ -1,6 +1,6 @@
-const Display = (props) => {
+const Display = ({att1 ,att2}) => {
     
-  return <li>{props.att}</li>
+  return <li>{att1} , {att2}</li>
 }
 
 export default Display
