@@ -3,11 +3,19 @@ import { useState } from "react"
 const App = (props) => {
   console.log(props.notes)
   const [notes, setNotes] = useState(props.notes)
-  const [ newNote,setNewNote] = useState( ' new note')
+  const [ newNote,setNewNote] = useState( '')
   const addNote = (event) =>{
   
     event.preventDefault()
-    
+    const noteObject = {
+      content : newNote,
+      important : Math.random() <0.5,
+      id : String(notes.length +1)
+
+
+    }
+    setNotes(notes.concat(noteObject))
+    setNewNote( '')  // to set field back to empty string after update
   }
   
 
