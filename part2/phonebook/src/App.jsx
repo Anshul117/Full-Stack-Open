@@ -1,9 +1,5 @@
 import { useState } from 'react'
-const Display = (props) =>{
-  return(
-    <div><li>{props.att}</li></div>
-  )
-}
+import Display from './component' 
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas' }
@@ -11,12 +7,18 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const addName = (event) =>{
     event.preventDefault()
+    const exists = persons.some(person =>(person.name===newName))
+    if(exists){
+      alert(`${newName} is already added to phonebook`)
+  return
+    }
     const nameObj ={
       name : newName
     }
+   
+    
     setPersons(persons.concat(nameObj))
     setNewName('')
-
   }
 
   return (
