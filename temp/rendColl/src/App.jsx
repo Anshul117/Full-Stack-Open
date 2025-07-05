@@ -19,10 +19,13 @@ const App = (props) => {
     setNewNote( '')  // to set field back to empty string after update
   }
   
-  const notesToShow = showAll ? notes : notes.filter( note => note.important =true)
+  const notesToShow = showAll ? notes : notes.filter( note => note.important)
   return (
     <div>
       <h1>Notes</h1>
+      <div>
+        <button onClick={() => setShowAll(!showAll)}> show {showAll ? 'important' :'all'}</button>
+      </div>
       <ul>
        {notesToShow.map(note => (<Note key = {note.id} note_att= {note} />))}
 
