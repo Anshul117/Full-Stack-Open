@@ -5,15 +5,11 @@ const App = (props) => {
   const [notes, setNotes] = useState(props.notes)
   const [ newNote,setNewNote] = useState( ' new note')
   const addNote = (event) =>{
-    console.log('ans', event)
+  
     event.preventDefault()
-    console.log('button Clicked', event.target)
+    
   }
-  const handleNewNote = (event) =>{
-    console.log('raw' ,event)
-    console.log('target', event.target.value)
-    setNewNote(event.target.value)
-  }
+  
 
   return (
     <div>
