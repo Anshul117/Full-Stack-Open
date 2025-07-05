@@ -4,6 +4,7 @@ const App = (props) => {
   console.log(props.notes)
   const [notes, setNotes] = useState(props.notes)
   const [ newNote,setNewNote] = useState( '')
+  const [showAll , setShowAll] = useState( true)
   const addNote = (event) =>{
   
     event.preventDefault()
@@ -18,12 +19,12 @@ const App = (props) => {
     setNewNote( '')  // to set field back to empty string after update
   }
   
-
+  const notesToShow = showAll ? notes : notes.filter( note => note.important =true)
   return (
     <div>
       <h1>Notes</h1>
       <ul>
-       {notes.map(note => (<Note key = {note.id} note_att= {note} />))}
+       {notesToShow.map(note => (<Note key = {note.id} note_att= {note} />))}
 
       </ul>
       <form onSubmit={addNote}> <input value={newNote} onChange={e=> setNewNote(e.target.value)}></input> <button type="submit">save</button></form>
